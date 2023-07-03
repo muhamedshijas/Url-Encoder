@@ -51,10 +51,8 @@ function UserHome() {
                 </div>
                 <h5 className="fw-normal my-4 pb-3" style={{ letterSpacing: '1px' }}>Sign into your account</h5>
                 <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg" />
-                <MDBBtn className="mb-4 px-5" color='dark' size='lg'  >Login</MDBBtn>
-                <a className="small text-muted" href="#!">Forgot password?</a>
-                <p className="mb-5 pb-lg-2" style={{ color: '#393f81' }}>Don't have an account? <a href="#!" style={{ color: '#393f81' }}>Register here</a></p>
-
+                <MDBBtn className="mb-4 px-5" color='dark' size='lg'  >Submit</MDBBtn>
+                
               </MDBCardBody>
             </MDBCol>
 
