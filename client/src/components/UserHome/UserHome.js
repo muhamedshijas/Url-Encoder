@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
@@ -32,6 +32,13 @@ function UserHome() {
 
 
   const dispatch = useDispatch()
+
+  const user=useSelector((state)=>{
+  
+    return state.user.details
+  });
+
+  const id=user._id
   async function handleLogout(e) {
     e.preventDefault()
     Swal.fire({
@@ -63,7 +70,7 @@ function UserHome() {
     (
       async function () {
         try {
-          const { data } = await axios.get("/user/viewurls")
+          const { data } = await axios.get("/user/viewurls/"+id)
           console.log(data)
           if (!data.err) {
             setUrlList(data.urls)
@@ -79,7 +86,7 @@ function UserHome() {
     console.log("hii")
     e.preventDefault();
     if (!validationErr()) {
-      let { data } = await axios.post('/user/urlsubmit', { title, shortUrl: url })
+      let { data } = await axios.post('/user/urlsubmit', { title, shortUrl: url ,id})
       console.log(data);
       if (!data.err) {
         alert("success")
@@ -137,15 +144,19 @@ function UserHome() {
             <div className="url-text">
             <p className="fw-bold text-center ">Your Recent URLs</p>
             </div>
+            {
+
+          urlList[0]? <div className="urls">
+            
               { 
                 urlList.map((item)=>{
                   return<MDBCard className='w-100 home-url-card'>
                   <MDBCardBody className='url-card' >
-                  <MDBCardTitle>{item.title}</MDBCardTitle>
+                  <MDBCardTitle className='text-success'>{item.title}</MDBCardTitle>
                     <div className="copy-url">
                     <div className="url-detials">
                     <MDBCardText className='card-text'>{item.longUrl}</MDBCardText>
-                    <MDBCardText className='card-detials'>created by muhamed shijas on 22/4/2022.</MDBCardText>
+                    <MDBCardText className='card-detials'>created by {item.userId.name} on {new Date(item.createdAt).toLocaleDateString()}.</MDBCardText>
                     </div>
                     <MDBIcon fas icon="copy" className='copy-url-btn' size='lg' onClick={() => handleCopyUrl(item.longUrl)} />
                     </div>
@@ -155,6 +166,9 @@ function UserHome() {
                 })
                 
                 }
+            </div>: <h4 className='text-center'>No data availabe</h4>
+              }
+
             </MDBCol>
 
 

@@ -6,6 +6,7 @@ import UserRegiterPage from './Pages/UserRegiterPage';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import UserHomepage from './Pages/UserHomepage';
+import UserRedirect from './Pages/UserRedirect';
 
 function App() {
   axios.defaults.baseURL = "http://localhost:5000/";
@@ -14,7 +15,7 @@ function App() {
     return state;
   });
 
-  
+
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -36,7 +37,8 @@ function App() {
             <Route path='/' element={<UserHomepage/>}/>
             <Route path='/login' element={<Navigate to='/' />}/>
             <Route path='/signup' element={<Navigate to='/' />}/>
-
+            <Route path='/:id' element={<UserRedirect/>}/>
+            
             </>
           }
 

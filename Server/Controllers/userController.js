@@ -3,7 +3,7 @@ import UserModel from "../Models/UserModel.js";
 import UrlModel from "../Models/UrlModel.js";
 import jwt from 'jsonwebtoken'
 import bcrypt from "bcryptjs"
-import {nanoid} from 'nanoid'
+import { nanoid } from 'nanoid'
 
 var salt = bcrypt.genSaltSync(10);
 
@@ -144,29 +144,42 @@ export async function userLogin(req, res) {
 
 export async function urlSubmit(req, res) {
   try {
-    const { title, shortUrl } = req.body
-    const token = req.cookies.userToken;
-    const userId = token.id
+    const { title, shortUrl,id } = req.body
+    const  userId=id
     const longUrl = `http://localhost:3000/${nanoid(6)}`
     console.log(longUrl)
     const newUrl = new UrlModel({ title, shortUrl, longUrl, userId })
     await newUrl.save();
-    res.json({err:false})
+    res.json({ err: false })
   } catch (err) {
-    res.json({err:true})
+    res.json({ err: true })
     console.log(err)
   }
 
 }
 
-export async function getViewUrls(req,res){
-try{
-  const token = req.cookies.userToken;
-  const id=token.id
- const urls= await UrlModel.find({userId:id}).sort({_id:-1})
-  console.log(urls)
-  res.json({error:false,urls})
-}catch(err){
-  res.json({error:true})
+export async function getViewUrls(req, res) {
+  try {
+
+    const id = req.params.id
+    
+    const urls = await UrlModel.find({ userId: id }).sort({ _id: -1 }).populate('userId').lean()
+    console.log(urls)
+    res.json({ error: false, urls })
+  } catch (err) {
+    res.json({ error: true })
+  }
 }
+
+export async function getLongUrl(req, res) {
+  try {
+    const id = req.params.id
+    console.log(id)
+    const longUrl = `http://localhost:3000/${id}`
+    const url = await UrlModel.findOne({ longUrl: longUrl })
+    console.log(url)
+    res.json({ err: false, url })
+  } catch (err) {
+
+  }
 }

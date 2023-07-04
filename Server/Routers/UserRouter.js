@@ -1,5 +1,5 @@
 import express from 'express'
-import { checkUserLoggedIn, getViewUrls, urlSubmit, userLogin, userLogout, userOtpVerify, userSignup } from '../Controllers/userController.js'
+import { checkUserLoggedIn, getLongUrl, getViewUrls, urlSubmit, userLogin, userLogout, userOtpVerify, userSignup } from '../Controllers/userController.js'
 const router=express.Router()
 
 
@@ -9,7 +9,8 @@ router.get("/check",checkUserLoggedIn)
 router.get('/logout',userLogout)
 router.post('/login',userLogin)
 router.post('/urlsubmit',urlSubmit)
-router.get('/viewurls',getViewUrls)
+router.get('/viewurls/:id',getViewUrls)
+router.get('/geturl/:id',getLongUrl)
 
 
 

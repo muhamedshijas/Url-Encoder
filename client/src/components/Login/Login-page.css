@@ -1,5 +1,5 @@
 body {
-    background-color: #9A616D;
+    background-color: #c6f5c6;
   }
   .login-form{
     display: flex;
@@ -57,8 +57,9 @@ body {
   background-color: #322C2D;
 }
 .copy-url{
+  padding: 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content:space-between;
   align-items: center;
   gap: 10px;
 }
