@@ -3,6 +3,7 @@ import UserModel from "../Models/UserModel.js";
 import UrlModel from "../Models/UrlModel.js";
 import jwt from 'jsonwebtoken'
 import bcrypt from "bcryptjs"
+import {nanoid} from 'nanoid'
 
 var salt = bcrypt.genSaltSync(10);
 
@@ -146,7 +147,8 @@ export async function urlSubmit(req, res) {
     const { title, shortUrl } = req.body
     const token = req.cookies.userToken;
     const userId = token.id
-    const longUrl = "ascdgfg??112"
+    const longUrl = `http://localhost:3000/${nanoid(6)}`
+    console.log(longUrl)
     const newUrl = new UrlModel({ title, shortUrl, longUrl, userId })
     await newUrl.save();
     res.json({err:false})
@@ -155,4 +157,16 @@ export async function urlSubmit(req, res) {
     console.log(err)
   }
 
+}
+
+export async function getViewUrls(req,res){
+try{
+  const token = req.cookies.userToken;
+  const id=token.id
+ const urls= await UrlModel.find({userId:id}).sort({_id:-1})
+  console.log(urls)
+  res.json({error:false,urls})
+}catch(err){
+  res.json({error:true})
+}
 }
