@@ -1,5 +1,5 @@
 import express from 'express'
-import { checkUserLoggedIn, userLogin, userLogout, userOtpVerify, userSignup } from '../Controllers/userController.js'
+import { checkUserLoggedIn, urlSubmit, userLogin, userLogout, userOtpVerify, userSignup } from '../Controllers/userController.js'
 const router=express.Router()
 
 
@@ -8,6 +8,7 @@ router.post('/verify',userOtpVerify)
 router.get("/check",checkUserLoggedIn)
 router.get('/logout',userLogout)
 router.post('/login',userLogin)
+router.post('/urlsubmit',urlSubmit)
 
 
 
