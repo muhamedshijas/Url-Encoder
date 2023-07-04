@@ -17,7 +17,7 @@ body {
     width: 500px !important;
  }
  .home-body{
- height: 660px;
+ height: 540px;
  justify-content: center;
  align-items: center;
  }
@@ -27,8 +27,24 @@ body {
    padding: 10px;
  }
  .home-url-card{
-   height: 50px;
+   height: 130px;
    border-radius: 3px;
    display: flex;
    justify-content: center;
  }
+.url-form{
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.url-home-body{
+  height: 100%;
+  justify-content: space-between;
+}
+.url-button{
+  width: 100%;
+}
+.logout{
+  cursor: pointer;
+}
