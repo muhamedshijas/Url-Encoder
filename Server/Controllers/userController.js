@@ -183,3 +183,13 @@ export async function getLongUrl(req, res) {
 
   }
 }
+
+export async function getDeleteUrl(req,res){
+  try{
+    const id=req.params.id
+    await UrlModel.findByIdAndDelete(id)
+    res.json({err:false})
+  }catch(err){
+
+  }
+}

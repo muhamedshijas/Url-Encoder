@@ -110,7 +110,23 @@ function UserHome() {
         toast.error('Failed to copy URL');
       });
   };
-
+  
+  const handleDelete=(id)=>{
+    Swal.fire({
+      title: 'Are you sure? logout',
+      text: "Delete this URL!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#7e3af2',
+      cancelButtonColor: '##a8a8a8',
+      confirmButtonText: 'Yes, Logout!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axios.get("/user/deleteurl/"+id)
+        setRefresh(!refresh)
+      }
+    })
+  }
 
 
   return (
@@ -161,7 +177,10 @@ function UserHome() {
                     <MDBCardText className='card-text'>{item.longUrl}</MDBCardText>
                     <MDBCardText className='card-detials'>created by {item.userId.name} on {new Date(item.createdAt).toLocaleDateString()}.</MDBCardText>
                     </div>
+                    <div className="url-icons">
                     <MDBIcon fas icon="copy" className='copy-url-btn' size='lg' onClick={() => handleCopyUrl(item.longUrl)} />
+                    <MDBIcon fas icon="trash-alt" className='copy-url-btn' size='lg' onClick={()=>handleDelete(item._id)}  />
+                    </div>
                     </div>
                     
                     </MDBCardBody>
