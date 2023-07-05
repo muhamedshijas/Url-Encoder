@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import ReactLoading from 'react-loading';
 
 export default function UserRedirect() {
   const [isLoading,setIsLoading]=useState(false)
@@ -9,6 +8,7 @@ export default function UserRedirect() {
     useEffect(() => {
         (async function(){
           setIsLoading(true)
+          console.log(isLoading)
             let {data} = await axios.get("user/geturl/"+id)
             setIsLoading(false)
             window.location.href=data.url.shortUrl
@@ -17,7 +17,7 @@ export default function UserRedirect() {
   return (
     <div>
       {
-        isLoading?<div className="admin-loading"> <ReactLoading type="puff" color="black" height={80} width={80} /></div>:""
+        isLoading?<p>Redirecting</p>:""
       }
     </div>
   )
