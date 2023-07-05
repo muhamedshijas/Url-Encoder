@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Loading from 'react-loading-components';
+
 
 export default function UserRedirect() {
   const [isLoading,setIsLoading]=useState(false)
@@ -17,7 +19,7 @@ export default function UserRedirect() {
   return (
     <div>
       {
-        isLoading?<p>Redirecting</p>:""
+        isLoading?isLoading? <Loading type='ball_triangle' width={100} height={100} fill='#f44242' />:""
       }
     </div>
   )
