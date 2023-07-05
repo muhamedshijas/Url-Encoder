@@ -146,7 +146,7 @@ export async function urlSubmit(req, res) {
   try {
     const { title, shortUrl,id } = req.body
     const  userId=id
-    const longUrl = `http://localhost:3000/${nanoid(6)}`
+    const longUrl = `https://trimbit.netlify.app/${nanoid(6)}`
     console.log(longUrl)
     const newUrl = new UrlModel({ title, shortUrl, longUrl, userId })
     await newUrl.save();
@@ -175,7 +175,7 @@ export async function getLongUrl(req, res) {
   try {
     const id = req.params.id
     console.log(id)
-    const longUrl = `http://localhost:3000/${id}`
+    const longUrl = `https://trimbit.netlify.app/${id}`
     const url = await UrlModel.findOne({ longUrl: longUrl })
     console.log(url)
     res.json({ err: false, url })
