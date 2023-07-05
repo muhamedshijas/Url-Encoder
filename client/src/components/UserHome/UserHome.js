@@ -129,7 +129,10 @@ function UserHome() {
                 <div className="url-submit-form">
                   <div className='d-flex flex-row mt-2'>
                     <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }} />
-                    <span className="h1 fw-bold mb-0">Url Shortner</span>
+                  <div className="url-head d-flex flex-column">
+                  <span className="h1 fw-bold mb-0">TinyURL</span>
+                  <h6 className="fw-normal mt-2" style={{ letterSpacing: '1px' }}>Trim, transform, and triumph with TinyURL</h6>
+                  </div>
                   </div>
                   <h5 className="fw-normal my-4 pb-3" style={{ letterSpacing: '1px' }}>Paste Your Link here</h5>
                   <MDBInput wrapperClass='mb-4' label='Title' id='formControlLg' type='text' size="lg" value={title} onChange={(e) => setTitle(e.target.value)} />

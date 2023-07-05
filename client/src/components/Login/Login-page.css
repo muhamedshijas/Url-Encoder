@@ -25,9 +25,9 @@ body {
    background-color: #322C2D;
    border-radius: 0 8px 8px 0;
    padding: 10px;
-   max-height: 650px;
+   max-height: 660px;
    overflow-y: scroll; 
- }
+  }
  .home-url-card{
    border-radius: 3px;
    display: flex;
@@ -83,4 +83,8 @@ body {
 }
 .copy-url-btn{
   cursor: pointer;
+}
+
+.home-url::-webkit-scrollbar{
+  display: none;
 }
