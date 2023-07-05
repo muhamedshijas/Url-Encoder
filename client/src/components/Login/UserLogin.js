@@ -14,6 +14,7 @@ import {
 from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function UserLogin() {
   const dispatch=useDispatch()
@@ -72,7 +73,7 @@ async function handleSubmit(e){
 
               <MDBBtn className="mb-4 px-5" color='dark' size='lg' disabled={validationErr()}  onClick={handleSubmit}>Login</MDBBtn>
               <a className="small text-muted" href="#!">Forgot password?</a>
-              <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="#!" style={{color: '#393f81'}}>Register here</a></p>
+              <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <Link to='/signup'style={{color: '#393f81'}}>Register here</Link></p>
 
           
 

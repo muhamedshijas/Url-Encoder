@@ -14,6 +14,7 @@ import {
 }
   from 'mdb-react-ui-kit';
 import VerifyOtp from '../VerifyOtp/verifyOpt';
+import { Link } from 'react-router-dom';
 
 function UserRegister() {
   const [email, setEmail] = useState("")
@@ -38,7 +39,7 @@ function UserRegister() {
     if (!validationErr()) {
       console.log("hjuiuu");
       let { data } = await axios.post("/user/signUp", { email })
-      
+
       if (data.err) {
         setErrmessage(data.message)
       } else {
@@ -50,11 +51,11 @@ function UserRegister() {
   return (
     <div className="register-section">
 
-    {
+      {
 
-      !showOtp?<MDBContainer className="my-5">
-      
-        <MDBCard>
+        !showOtp ? <MDBContainer className="my-5">
+
+          <MDBCard>
             <MDBRow className='g-0 login-section'>
 
               <MDBCol md='6' className='login-image'>
@@ -66,7 +67,7 @@ function UserRegister() {
 
                   <div className='d-flex flex-row mt-2'>
                     <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }} />
-                    <span className="h1 fw-bold mb-0">Url Shortner</span>
+                    <span className="h1 fw-bold mb-0">TinyURL</span>
                   </div>
 
                   <h5 className="fw-normal my-4 pb-3" style={{ letterSpacing: '1px' }}>Create  a new  account</h5>
@@ -83,7 +84,7 @@ function UserRegister() {
 
                   <MDBBtn className="mb-4 px-5" color='dark' size='lg' disabled={validationErr()} onClick={handleSubmit}>Login</MDBBtn>
 
-                  <p className="mb-5 pb-lg-2" style={{ color: '#393f81' }}>Do you have an account? <a href="#!" style={{ color: '#393f81' }}>Login Here</a></p>
+                  <p className="mb-5 pb-lg-2" style={{ color: '#393f81' }}>Do you have an account? <Link to='/login' style={{ color: '#393f81' }}>Login Here</Link></p>
 
 
 
@@ -92,10 +93,10 @@ function UserRegister() {
 
             </MDBRow>
           </MDBCard>
-    
-    </MDBContainer>:<VerifyOtp data={{ name, email, password, phoneNo }} />
-  }
-  </div>
+
+        </MDBContainer> : <VerifyOtp data={{ name, email, password, phoneNo }} />
+      }
+    </div>
 
   );
 }
