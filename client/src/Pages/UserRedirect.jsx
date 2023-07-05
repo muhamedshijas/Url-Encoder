@@ -19,7 +19,7 @@ export default function UserRedirect() {
   return (
     <div>
       {
-      isLoading?  <div className="d-flex justify-content-center align-item-center">
+      isLoading?  <div className="d-flex justify-content-center align-items-center">
       <Loading type='ball_triangle'   width={100} height={100} fill='#f44242' />
       </div>:""
       }
