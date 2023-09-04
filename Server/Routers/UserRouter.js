@@ -12,7 +12,8 @@ router.post('/urlsubmit',urlSubmit)
 router.get('/viewurls/:id',getViewUrls)
 router.get('/geturl/:id',getLongUrl)
 router.get('/deleteurl/:id',getDeleteUrl)
-router.get('/checkUrl/:url',checkUrl)
+
+
 
 
 
