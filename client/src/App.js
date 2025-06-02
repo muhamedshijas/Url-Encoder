@@ -9,7 +9,7 @@ import UserHomepage from './Pages/UserHomepage';
 import UserRedirect from './Pages/UserRedirect';
 
 function App() {
-  axios.defaults.baseURL = "https://trimbit.homekart.store";
+  axios.defaults.baseURL = "https://url-encoder-server.onrender.com";
   axios.defaults.withCredentials = true;
   const { user, refresh } = useSelector((state) => {
     return state;
