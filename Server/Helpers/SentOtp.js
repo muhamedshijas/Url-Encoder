@@ -7,7 +7,7 @@ export default function sentOtp(email, otp){
             secure: true,
             auth: {
               user: "muhamedshijasm@gmail.com",
-              pass: "vgrarunraaribljd",
+              pass: "nxuagjmfooxqlzhz",
             },
           });
       
