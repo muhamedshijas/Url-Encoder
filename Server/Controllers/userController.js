@@ -175,6 +175,8 @@ export async function getLongUrl(req, res) {
   try {
     const id = req.params.id
     console.log(id)
+    console.log("hiii url fetcing");
+    
     const longUrl = `https://trimbit.netlify.app/${id}`
     const url = await UrlModel.findOne({ longUrl: longUrl })
     console.log(url)
